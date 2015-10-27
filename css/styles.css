@@ -1,22 +1,32 @@
 /*use element selector to all p elements for this style*/
 p{
     color: cadetblue;
-    font-size: 32px;
+    font-size: 18px;
 }
 
-/*use class selector to define style for elements*/
-.mun_keksima{
-    background-color: aquamarine;
+footer p{
+    color: black;
 }
+
+
+/*use class selector to define style for elements*/
+
 
 .fancy{
     color: green;
     border: 2px;
-    background-color: beige;
+    background-color: red;
     border-radius: 8px;
+}
+
+.mun_keksima{
+    background-color: aquamarine;
 }
 
 /*use id selector to define style*/
 #joku_tyyli{
     margin: 100px;
 }
+
+div p {
+    
