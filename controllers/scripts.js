@@ -9,16 +9,12 @@ window.onload = function(event) {
 }*/
 
 
+
 // Wait document ready event. (DOM is ready)
 $(document).ready(function(){
     
     console.log("jquery onload triggered");
-    $("#fuutteri").css("background-color", "lightblue")
-        .css("padding","20px").css("border-radius", "8px");
-    
-    $(".about").html("<b>New text</b>");
-    $("[data-dummy]").append("Hello World!");
-    
+
     
     var setting = {
         
@@ -42,44 +38,72 @@ $(document).ready(function(){
             
             
             var row = $("<tr></tr>");
-            for(var i = 1; i<headers.length; i++) {
+            /*for(var i = 1; i<headers.length; i++) {
                   
                     $("<td>" + headers[i] + "</td>").appendTo(row);
-            }
+            }*/
+            
+            $("<td>" + "Name" + "</td>").appendTo(row);
+            $("<td>" + "Address" + "</td>").appendTo(row);
+            $("<td>" + "Age" + "</td>").appendTo(row);
+           // $("<td>" + "E-mail" + "</td>").appendTo(row);
             
             //Add row to thead element
             $(row).appendTo("thead");
             
-        /* Tämä on keskeneräinen dynaaminen rakenne datan lisäämiseen tableen
-            var row2 = $("<tr></tr>"); 
-           
-            console.log(data.rows[0][headers[1]]);
-            for(var j = 0; j<data.rows.length;j++) {
-                
-                for(var k = 1; k<headers.length; k++) {
-
-                        html += "<td>"+ data.rows[j][headers[k]] + "                    </td>").appendTo(row2);
-                }
-
-                //Add row to tbody element
-                $(row2).appendTo("#body1");
-            }
-        
-        */
         }
         
         
         // Create table content dynamically
         for(var i=0; i<data.length; i++) {
             var html =  "<tr>"+       
+                        "<td>" + data[i].name + "</td>"+
                         "<td>" + data[i].address + "</td>"
-                        +"<td>" + data[i].name + "</td>"
+                        
                         +"<td>" + data[i].age + "</td>"
-                        +"<td>" + data[i].email + "</td>"+ "</tr>";
+                        +"<td><input type='button' id=" + data[i]._id + " value = 'modify'/></td>"+ "</tr>";
             $(html).appendTo("#body1");
         }
         
         
+        // get all elements from DOM where element has attribute
+        // 'type' with value 'button'. Then add event handler for
+        // click event for each of them
+        $("[type=button]").click(function(clickdata) {
+        
+           for (var i = 0; i<data.length; i++) {
+                // find the data from collection corresponding to pressed button id
+                if (data[i]._id == clickdata.currentTarget.id) {
+                    
+                    buildModifyUI(data[i]);
+                    break;
+                }
+                
+                
+            }
+                
+            console.log(clickdata.currentTarget.id);
+        
+        });
+        
     });
     
 });
+
+
+function buildModifyUI(person_data) {
+    
+    //console.log(person_data.name);
+    var html = "<input type='text' value='" + person_data.name + "'/> <br>" +
+                "<input type='text' value='" + person_data.address + "'/> <br>" +
+        "<input type='text' value='" + person_data.age + "'/> <br>" +
+        "<input type='text' value='" + person_data.email + "'/> <br>"
+    ;
+    
+    
+    
+    
+    
+    $("body").html(html);
+    
+}

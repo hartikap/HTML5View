@@ -8,10 +8,14 @@ router.get('/', function(req,res){
     db.getAllPersons(req,res);
 });
 
+
+// Handle POST requests for /person context
 router.post('/', function(req,res){
+    db.saveNewPerson(req,res);
 });
 
 router.put('/', function(req,res){
+    
 });
 
 router.delete('/', function(req,res){
