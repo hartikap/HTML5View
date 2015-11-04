@@ -32,3 +32,20 @@ exports.saveNewPerson = function(req,res){
     
 }
 
+exports.deletePerson = function(req,res){
+    
+    // req.params.if returns 'id=34124j124j124'. Following
+    // code returns just the '34124j124j124'
+    var id = req.params.id.split("=")[1];
+    
+    db.Person.remove({_id:id},function(err){
+        
+        if(err){
+            res.send(err.message);
+        }
+        else{
+            res.send("Delete ok");
+        }
+    });
+    
+};

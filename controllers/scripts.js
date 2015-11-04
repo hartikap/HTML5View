@@ -82,7 +82,7 @@ $(document).ready(function(){
                 
             }
                 
-            console.log(clickdata.currentTarget.id);
+            //console.log(clickdata.currentTarget.id);
         
         });
         
@@ -94,16 +94,31 @@ $(document).ready(function(){
 function buildModifyUI(person_data) {
     
     //console.log(person_data.name);
-    var html = "<input type='text' value='" + person_data.name + "'/> <br>" +
-                "<input type='text' value='" + person_data.address + "'/> <br>" +
-        "<input type='text' value='" + person_data.age + "'/> <br>" +
-        "<input type='text' value='" + person_data.email + "'/> <br>"
-    ;
-    
-    
-    
-    
+    var html = "<input type='text' value='" + person_data.name + "'/>" 
+                + "<input type='text' value='" + person_data.address + "'/>"
+                + "<input type='text' value='" + person_data.age + "'/>"
+                + "<input type='text' value='" + person_data.email + "'/>"
+                + "<input type='button' value='Update' id='update'/>"
+                + "<input type='button' value='Delete' id='delete'/>";  
     
     $("body").html(html);
     
+    $("#delete").click(function(){
+        
+        $.ajax({
+            method:'DELETE',
+            url:'http://localhost:3000/persons/id='+person_data._id
+    
+        }).done(function(data){
+            
+            location.reload(true);
+        });
+        
+    });
+                       
+        
+        
+    
 }
+
+

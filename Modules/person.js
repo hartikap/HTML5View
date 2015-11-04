@@ -18,7 +18,9 @@ router.put('/', function(req,res){
     
 });
 
-router.delete('/', function(req,res){
+router.delete('/:id', function(req,res){
+    db.deletePerson(req,res);
+    
 });
 
 module.exports = router;
