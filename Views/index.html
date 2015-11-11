@@ -1,49 +1,31 @@
-<!doctype html>
-<html lang="fi">
+<!doctype HTML>
+<html>
     <head>
         <meta charset="utf-8">
-        <title>Hello World!</title>
-        <link href="/css/styles.css" type="text/css" rel="stylesheet"/>
-        <link href="/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
-        <link href="/css/bootstrap-theme.min.css" type="text/css" rel="stylesheet"/>
+        <title> Login Friends </title>
+        <link href="../css/bootstrap.min.css" type="text/css" rel="stylesheet">
+        <link href="../css/bootstrap-theme.min.css" type="text/css" rel="stylesheet">
+        <link href="../css/styles.css" type="text/css" rel="stylesheet">
     </head>
-    
-    <body>
-        <div>
-            <nav>
-                <a href="AddPerson.html">Add person</a>
-            </nav>
-            
-            <h1 class="heading1">About</h1>
-            
-            <section>
-            
+    <body class="startpage">
+        <div class="login_container">
+            <h3 class="center_this"> Login or register to Friends App! </h3>
+            <form>
+                <input type="text" placeholder="username" class="form-control"> <br/>
+                <input type="password" placeholder = "password" class="form-control"> <br/>
                 
-                
-                <table class="table">
-                    <thead id="head1">
-                    </thead>
-                    <tbody id="body1">
-                    </tbody>
-                    
-                    
-                    
-                </table>
+              
+                <input type="submit" value="Login" class="btn btn-success">
+                <input type="submit" value="Register" class="btn btn-info">
+               
+            </form>      
+            <br>
+            <p id="status">Not logged In</p>
             
-            </section>
-        
-            <footer data-dummy="">
-                <p>Yhteystiedot ja copyright</p>
-            </footer>
-        
+            
         </div>
-        
-        <script src="/lib/jquery-2.1.4.min.js"></script>
-        <script src="/controllers/scripts.js"></script>
-        
+ 
+        <script src="../lib/jquery-2.1.4.min.js"></script>
+        <script src="../controllers/login_script.js"></script>
     </body>
 </html>
-
-
-
-

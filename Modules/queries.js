@@ -19,6 +19,28 @@ exports.getAllPersons = function(req,res){
 }
 
 
+// This function searches database by name or by begin
+// letters of name
+exports.findPersonsByName = function(req,res){
+    
+    var name = req.params.nimi.split("=")[1];
+    //console.log(name);
+    
+    db.Person.find({name: {'$regex':'^'+ name,'$options':'i'}}, function(err,data) {
+        
+       if(err) {
+           console.log("error");
+           res.send('error');
+       } else {
+           console.log(data);
+           res.send(data);
+           
+       }
+        
+    });
+    
+}
+    
 // This functions saves new person information to our person-collection
 exports.saveNewPerson = function(req,res){
     
@@ -27,7 +49,7 @@ exports.saveNewPerson = function(req,res){
     // save personTemp-object to the collection
     personTemp.save(function(err,ok){
         
-        res.send("database action done");
+        res.redirect('/');
     });
     
 }

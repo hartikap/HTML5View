@@ -43,10 +43,10 @@ $(document).ready(function(){
                     $("<td>" + headers[i] + "</td>").appendTo(row);
             }*/
             
-            $("<td>" + "Name" + "</td>").appendTo(row);
-            $("<td>" + "Address" + "</td>").appendTo(row);
-            $("<td>" + "Age" + "</td>").appendTo(row);
-           // $("<td>" + "E-mail" + "</td>").appendTo(row);
+           $("<td>" + "Name" + "</td>").appendTo(row);
+           $("<td>" + "Address" + "</td>").appendTo(row);
+           $("<td>" + "Age" + "</td>").appendTo(row);
+           $("<td>" + "E-mail" + "</td>").appendTo(row);
             
             //Add row to thead element
             $(row).appendTo("thead");
@@ -84,6 +84,45 @@ $(document).ready(function(){
                 
             //console.log(clickdata.currentTarget.id);
         
+        });
+        
+        
+        // Event handler for the search-button
+        $("#search").click(function() {
+            
+            var text = $("#search_text").val();
+            
+            //console.log(text);
+            
+            $.ajax({
+            
+                method: "GET",
+                url: "http://localhost:3000/persons/nimi=" +text
+            
+            }).done(function(data){
+                
+                console.log(data);
+                       
+                $("tbody").children().remove();
+               
+                for(var i=0; i<data.length; i++) {
+            
+                    var html =  "<tr>"+       
+                                "<td>" + data[i].name + "</td>"+
+                                "<td>" + data[i].address + "</td>"
+                                +"<td>" + data[i].age + "</td>"
+                                +"<td><input type='button' id=" + data[i]._id + " value = 'modify'/></td>"+ "</tr>";
+                    $(html).appendTo("#body1");
+       
+                }
+                
+                
+            }).error(function(err){
+                
+                console.log(err);
+       
+            });
+            
         });
         
     });
