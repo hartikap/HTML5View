@@ -6,6 +6,7 @@ var database = require('./modules/database');
 var queries = require('./modules/queries');
 var person = require('./modules/person');
 var app = express();
+var user = require('./Modules/user');
 
 //====================MIDDLEWARES================================
 
@@ -27,8 +28,9 @@ app.use('/', express.static(path.join(__dirname, 'views')));
 app.use('/css', express.static(path.join(__dirname, 'css')));
 app.use('/controllers', express.static(path.join(__dirname, 'controllers')));
 app.use('/lib', express.static(path.join(__dirname, 'lib')));
-
 app.use('/persons', person);
+app.use('/friends', user);
+
 
 // ====================ROUTERS====================================
 

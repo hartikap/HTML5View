@@ -1,7 +1,8 @@
 var mongoose = require("mongoose");
 
-mongoose.connect('mongodb://localhost:27017/oma',connectionStatus);
+mongoose.createConnection('mongodb://localhost:27017/oma',connectionStatus);
 
+//mongoose.connect('mongodb://localhost:27017/oma',connectionStatus);
 
 // Connection callback for fail and ok cases
 function connectionStatus(err,ok){
@@ -28,4 +29,4 @@ var Person = mongoose.model('Person', {
     
 // Using exports -object  you expose the data to other modules
 exports.Person = Person;
-
+exports.Friends = User;
